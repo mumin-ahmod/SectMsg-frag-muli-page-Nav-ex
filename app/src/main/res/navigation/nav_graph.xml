@@ -17,5 +17,14 @@
         android:id="@+id/fragmentMessage"
         android:name="com.example.sectmsg_frag_muli_page_ex.FragmentMessage"
         android:label="fragment_message"
-        tools:layout="@layout/fragment_message" />
+        tools:layout="@layout/fragment_message" >
+        <action
+            android:id="@+id/action_fragmentMessage_to_encryptFagment"
+            app:destination="@id/encryptFagment" />
+    </fragment>
+    <fragment
+        android:id="@+id/encryptFagment"
+        android:name="com.example.sectmsg_frag_muli_page_ex.EncryptFagment"
+        android:label="fragment_encrypt_fagment"
+        tools:layout="@layout/fragment_encrypt_fagment" />
 </navigation>
