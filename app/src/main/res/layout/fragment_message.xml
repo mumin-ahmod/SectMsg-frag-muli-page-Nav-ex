@@ -8,7 +8,7 @@
     android:padding="16dp"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".FragmentMessage">
+    tools:context=".MessageFragment">
 
     <EditText
         android:id="@+id/message"

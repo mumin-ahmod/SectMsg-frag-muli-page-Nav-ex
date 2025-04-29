@@ -11,20 +11,25 @@
         android:label="WelcomeFragment" >
         <action
             android:id="@+id/action_welcomeFragment_to_fragmentMessage"
-            app:destination="@id/fragmentMessage" />
+            app:destination="@id/messageFragment" />
     </fragment>
     <fragment
-        android:id="@+id/fragmentMessage"
-        android:name="com.example.sectmsg_frag_muli_page_ex.FragmentMessage"
+        android:id="@+id/messageFragment"
+        android:name="com.example.sectmsg_frag_muli_page_ex.MessageFragment"
         android:label="fragment_message"
         tools:layout="@layout/fragment_message" >
         <action
             android:id="@+id/action_fragmentMessage_to_encryptFagment"
             app:destination="@id/encryptFagment" />
+
     </fragment>
     <fragment
         android:id="@+id/encryptFagment"
-        android:name="com.example.sectmsg_frag_muli_page_ex.EncryptFagment"
+        android:name="com.example.sectmsg_frag_muli_page_ex.EncryptFragment"
         android:label="fragment_encrypt_fagment"
-        tools:layout="@layout/fragment_encrypt_fagment" />
+        tools:layout="@layout/fragment_encrypt_fagment">
+    <argument
+        android:name="message"
+        app:argType="string" />
+    </fragment>
 </navigation>

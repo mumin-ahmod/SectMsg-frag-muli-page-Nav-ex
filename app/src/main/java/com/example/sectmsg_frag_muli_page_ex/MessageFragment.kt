@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import androidx.navigation.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -13,10 +16,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [EncryptFagment.newInstance] factory method to
+ * Use the [MessageFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class EncryptFagment : Fragment() {
+class MessageFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +37,25 @@ class EncryptFagment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_encrypt_fagment, container, false)
+        val view = inflater.inflate(R.layout.fragment_message, container, false)
+
+        val nextButton = view.findViewById<Button>(R.id.next)
+
+        val messageView = view.findViewById<EditText>(R.id.message)
+
+        //when button clicks,navigate to new fragment
+        nextButton.setOnClickListener{
+            //old way
+//            view.findNavController().navigate(R.id.action_fragmentMessage_to_encryptFagment)
+            //new safe args way
+
+            val message = messageView.text.toString()
+            val action = MessageFragmentDirections.actionFragmentMessageToEncryptFagment(message)
+
+            view.findNavController().navigate(action)
+        }
+
+        return view
     }
 
     companion object {
@@ -44,12 +65,12 @@ class EncryptFagment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment EncryptFagment.
+         * @return A new instance of fragment FragmentMessage.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            EncryptFagment().apply {
+            MessageFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
